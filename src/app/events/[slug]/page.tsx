@@ -4,13 +4,13 @@ import { format } from 'date-fns'
 import { getEventById } from '@/data/events'
 import { MotionDiv } from '@/components/ui/motion'
 
-interface EventPageProps {
+interface PageProps {
   params: {
     slug: string
   }
 }
 
-export async function generateMetadata({ params }: EventPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await Promise.resolve(params)
   const event = await getEventById(slug)
 
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
   }
 }
 
-export default async function EventPage({ params }: EventPageProps) {
+export default async function EventPage({ params }: PageProps) {
   const { slug } = await Promise.resolve(params)
   const event = await getEventById(slug)
 
